@@ -1,4 +1,3 @@
-//Guys note that this is just the gui part so we need to code more and planned to make this game actually play.
 import java.awt.Color;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,37 +7,57 @@ import javax.swing.*;
 public class face {
 
     public static void main(String[] args) {
-        
-        //A class that show the graphic frame
+
         JFrame show = new JFrame("Welcome to the field!");
         show.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         show.setSize(700, 700);
-        
-        // a grid class the show 3x3 block of spaces
         GridLayout grid = new GridLayout(3, 3);
         show.getContentPane().setBackground(Color.RED);
         // show.pack();
       
         JTextField text = new JTextField(50);
         JButton b1 = new JButton("Button 1");
-        
-        //Enabling a class called action listiner so that it decides what to do when u click a block.
+        //b1.setBackground(Color.RED);
+        int flag = 0;
+
+
+        int x = 0;
         b1.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent e) {
-
+                boolean flag1 = false;
                 // Font.BOLD
                 b1.setFont(new Font("Fantasy", Font.ITALIC, 70));
+            
 
-                text.setText("O");
+                if(flag == 0){
+
+                    text.setText("O");
+                    // flag +=1;
+                    
+
+                }else{
+                    text.setText("X");
+                    
+
+
+                }
+
+    
+
+
 
                 b1.setText(text.getText());
+
                 ;
 
             }
 
+
         });
+
+        System.out.println(b1.getText());
         JButton b2 = new JButton("Button 2");
+
 
         b2.addActionListener(new ActionListener() {
 
@@ -200,3 +219,4 @@ public class face {
     }
 
 }
+                      
