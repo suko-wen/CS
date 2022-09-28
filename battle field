@@ -1,0 +1,175 @@
+import javax.swing.JButton;
+
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Battle_OX implements ActionListener{
+    
+    JFrame board = new JFrame();
+    JPanel mode = new JPanel();
+    JPanel button_mode = new JPanel();
+    JLabel text = new JLabel();
+    JTextField field_text = new JTextField(50);
+    JButton[] buttons = new JButton[9];
+    boolean player_mode;
+    int count = 0;
+
+    public Battle_OX(){
+
+        //board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        board.setSize(1000, 1000);
+        board.getContentPane().setBackground(Color.BLUE);
+        board.setLayout(new BorderLayout());
+        board.setVisible(true);
+
+        text.setBackground(Color.BLUE);
+        //text.setForeground(Color.BLUE);
+        text.setFont(new Font("Fantasy", Font.ITALIC, 70));
+        text.setHorizontalAlignment(JLabel.CENTER);
+       // text.setText("WELCOME TO BATTLE OX!");
+        text.setOpaque(true);
+
+        mode.setLayout(new BorderLayout());
+        mode.setBounds(0,0,500,100);
+
+       // board.add(mode, BorderLayout.NORTH);
+        button_mode.setLayout(new GridLayout(3,3));
+       // button_mode.setBackground(Color.BLUE);
+
+        for(int i = 0; i < 9; i++){
+
+            buttons[i] = new JButton("");
+
+        
+            buttons[i].setFont(new Font("MV Boli",10,50));
+            buttons[i].setFocusable(false);
+            buttons[i].addActionListener(this);
+            button_mode.add(buttons[i]);
+        
+            //buttons[i].setVisible(true);
+              
+
+        }
+        mode.add(text);
+        board.add(mode, BorderLayout.NORTH);
+        board.add(button_mode);
+        
+
+        Player_mode();
+        
+
+    }
+
+    public void actionPerformed(ActionEvent e){
+
+        for(int i = 0 ; i < 9;i++){
+            count++;
+
+            if(e.getSource() == buttons[i]){
+                if(player_mode == true){
+                    
+                    if(buttons[i].getText() == ""){
+                       buttons[i].setForeground(Color.BLUE);
+                       field_text.setText("O");
+                       buttons[i].setText(field_text.getText());
+                       player_mode = false;
+                       text.setText("X Defend");
+                    }
+
+                }else{
+                    if(buttons[i].getText() == ""){
+                        buttons[i].setForeground(Color.BLUE);
+                        field_text.setText("X");
+                        buttons[i].setText(field_text.getText());
+                        player_mode = true;
+                        text.setText("O Defend");
+                        verify();
+
+                     }
+
+
+
+                }
+
+
+
+            }
+
+
+
+
+        }
+
+    }
+
+    public void Player_mode(){
+
+
+        text.setText("WELCOME TO BATTLE OX!");
+        
+        try{
+            Thread.sleep(5000);
+            text.setBackground(Color.RED);
+        }catch(Exception e){
+
+        }
+
+
+        int val = (int)(Math.random()*(2));
+
+        if(val == 1){
+
+            player_mode = true;
+            text.setText("O Defend!");
+
+
+
+        }else{
+
+            player_mode = false;
+            text.setText("X Defend!");
+
+        }
+
+
+    }
+
+    public void verify(){
+
+
+
+
+    }
+
+    public void victor_X(int x, int y, int z){
+
+
+
+    }
+
+    
+    public void victor_O(int x, int y, int z){
+
+
+
+    }
+
+    public void end(){
+
+      if(count == 9){
+
+        board.setVisible(false);;
+
+
+
+      }
+
+
+      System.out.println(count);
+
+    }
+
+
+}
