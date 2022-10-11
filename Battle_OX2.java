@@ -382,7 +382,7 @@ public class Battle_OX2 implements ActionListener{
 
             //initializig a scanner to scann the audio file.
             Scanner scanner = new Scanner(System.in);
-            File file = new File("videoplayback.wav");
+            File file = new File("mp3juices.vin-He-s-a-Pirate-_128kbps_.wav");
       
       
       
